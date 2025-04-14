@@ -81,7 +81,7 @@
 }
 
 .tooltip {
-  cursor: help;
+  cursor: help !important;
   border-bottom: 1px dotted #333;
   font-weight: bold;
   padding: 0 3px;
