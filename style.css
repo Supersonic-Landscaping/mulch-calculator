@@ -48,21 +48,7 @@
 
 /* Button styling */
 .smc-widget button {
-  width: 225px;
-  background-color: #27ae60;
-  border: none;
-  color: #fff;
-  font-size: 1em;
-  padding: 10px 0;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 8px;
-  transition: background-color 0.3s ease;
   margin-bottom: 12px;
-}
-
-.smc-widget button:hover {
-  background-color: #219150;
 }
 
 /* Result message styling */
@@ -76,7 +62,7 @@
 
 /* Disclaimer styling - small print (12px) */
 .smc-disclaimer {
-  font-size: 12px;
+  font-size: 12px !important;
   text-align: left;
   margin-top: 16px;
   color: #888;
@@ -84,9 +70,9 @@
 
 /* Credit styling */
 .smc-credit {
-  font-size: 12px;
+  font-size: 12px !important;
   text-align: left;
-  margin-top: 13px;
+  margin-top: 8px;
   color: #888;
 }
 

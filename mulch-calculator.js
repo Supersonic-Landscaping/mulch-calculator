@@ -34,7 +34,7 @@
             </label>
             <input type="number" id="smc-depth-${i}" placeholder="Enter mulch depth" value="3">
           </div>
-          <button id="smc-calc-${i}">Calculate</button>
+          <button id="smc-calc-${i}" class="button">Calculate</button>
           <div id="smc-results-${i}" class="smc-results">
             <p><strong>Mulch volume required:</strong> <span id="smc-result-${i}">—</span></p>
             <p><strong>Estimated labor cost:</strong> <span id="smc-cost-${i}">—</span></p>
