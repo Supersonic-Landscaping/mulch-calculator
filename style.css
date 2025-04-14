@@ -48,7 +48,7 @@
 
 /* Button styling */
 .smc-widget button {
-  width: 100%;
+  max-width: 220px;
   background-color: #27ae60;
   border: none;
   color: #fff;
