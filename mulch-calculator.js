@@ -5,7 +5,7 @@
       var link = document.createElement("link");
       link.id = "smc-stylesheet";
       link.rel = "stylesheet";
-      link.href = "https://raw.githubusercontent.com/Supersonic-Landscaping/mulch-calculator/main/style.css";
+      link.href = "https://raw.githack.com/Supersonic-Landscaping/mulch-calculator/main/style.css";
       document.head.appendChild(link);
     }
   }
