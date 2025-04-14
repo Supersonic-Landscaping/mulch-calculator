@@ -93,4 +93,10 @@
   color: #888;
 }
 
+.tooltip {
+  cursor: help;
+  border-bottom: 1px dotted #333;
+  font-weight: bold;
+  padding: 0 3px;
+}
 
