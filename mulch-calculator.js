@@ -12,9 +12,19 @@
       var laborPriceStr = calculators[i].getAttribute("data-labor-price");
       var laborPrice = (laborPriceStr && !isNaN(parseFloat(laborPriceStr))) ? parseFloat(laborPriceStr) : 60.0;
       
-      // Inject the widget HTML.
+      // Inject the widget HTML with microdata markup.
       calculators[i].innerHTML = `
-        <div class="smc-widget">
+        <div class="smc-widget" itemscope itemtype="https://schema.org/WebApplication">
+          <!-- Basic Microdata Attributes -->
+          <meta itemprop="name" content="${titleText}">
+          <meta itemprop="description" content="This tool provides an estimated mulch installation price based on user-supplied dimensions and labor cost inputs.">
+          <meta itemprop="applicationCategory" content="UtilitiesApplication">
+          <meta itemprop="operatingSystem" content="All">
+          <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <meta itemprop="price" content="0">
+            <meta itemprop="priceCurrency" content="USD">
+          </div>
+
           <h3>${titleText}</h3>
           <p class="smc-estimate-note" style="font-style: italic; font-size: 0.9em; color: #555; text-align: left; margin-bottom: 18px;">
             This is an estimated quote; final pricing may vary based on project specifics.
@@ -91,6 +101,7 @@
     }
   });
 })();
+
 
 
 
