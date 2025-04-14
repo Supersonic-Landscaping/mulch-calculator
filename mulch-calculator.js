@@ -5,6 +5,8 @@
       var link = document.createElement("link");
       link.id = "smc-stylesheet";
       link.rel = "stylesheet";
+      link.type = "text/css"; // Explicitly set MIME type
+      // Use raw.githack.com so that the CSS is served with proper headers
       link.href = "https://raw.githack.com/Supersonic-Landscaping/mulch-calculator/main/style.css";
       document.head.appendChild(link);
     }
@@ -20,8 +22,8 @@
 
     // Loop through each instance of the calculator.
     for (var i = 0; i < calculators.length; i++) {
-      // Get custom title; default to "Mulch Calculator" if not provided.
-      var titleText = calculators[i].getAttribute("data-title") || "Mulch Calculator";
+      // Get custom title; default to "Mulch Installation Calculator" if not provided.
+      var titleText = calculators[i].getAttribute("data-title") || "Mulch Installation Calculator";
       // Get the custom labor price attribute; default to $40 if not provided.
       var laborPriceStr = calculators[i].getAttribute("data-labor-price");
       var laborPrice = (laborPriceStr && !isNaN(parseFloat(laborPriceStr))) ? parseFloat(laborPriceStr) : 40.0;
@@ -46,9 +48,7 @@
           <p id="smc-result-${i}"></p>
           <p id="smc-cost-${i}"></p>
           <p class="smc-disclaimer">*Note: This estimate includes only labor costs. Mulch material price is not included.</p>
-          <p class="smc-credit">
-            Tool by <a href="https://supersoniclandscaping.com" target="_blank">Supersonic Landscaping</a>
-          </p>
+          <p class="smc-credit">Tool by <a href="https://supersoniclandscaping.com" target="_blank">Supersonic Landscaping</a></p>
         </div>
       `;
       
@@ -75,7 +75,7 @@
           // Calculate volume:
           // - Convert depth from inches to feet.
           // - Compute volume in cubic feet: area * (depth in feet).
-          // - Convert to cubic yards (1 cubic yard = 27 cubic feet).
+          // - Convert cubic feet to cubic yards (1 cubic yard = 27 cubic feet).
           var volumeCubicFeet = area * (depth / 12);
           var volumeCubicYards = volumeCubicFeet / 27;
           
@@ -90,5 +90,6 @@
     }
   });
 })();
+
 
 
