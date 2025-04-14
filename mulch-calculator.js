@@ -37,7 +37,7 @@
             <p><strong>Estimated labor cost:</strong> <span id="smc-cost-${i}">—</span></p>
           </div>
           <p class="smc-disclaimer" style="font-size:12px;">*Note: This estimate includes only labor costs. Mulch material price is not included.</p>
-          <p class="smc-credit">Tool by <a href="https://supersoniclandscaping.com" target="_blank">Supersonic Landscaping</a></p>
+          <p class="smc-credit">Tool by <a href="https://www.supersoniclandscaping.com" target="_blank">Supersonic Landscaping</a></p>
         </div>
       `;
       
