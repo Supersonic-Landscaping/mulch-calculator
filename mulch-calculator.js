@@ -4,13 +4,13 @@
     // Get all elements designated to host the mulch calculator widget.
     var calculators = document.getElementsByClassName("supersonic-mulch-calculator");
 
-    // Loop through each instance of the calculator.
+    // Loop through each calculator instance.
     for (var i = 0; i < calculators.length; i++) {
-      // Get custom title; default to "Mulch Installation Calculator" if not provided.
+      // Get a custom title (default: "Mulch Installation Calculator").
       var titleText = calculators[i].getAttribute("data-title") || "Mulch Installation Calculator";
-      // Get the custom labor price attribute; default to $40 if not provided.
+      // Get the custom labor price attribute (default: $60 per cubic yard).
       var laborPriceStr = calculators[i].getAttribute("data-labor-price");
-      var laborPrice = (laborPriceStr && !isNaN(parseFloat(laborPriceStr))) ? parseFloat(laborPriceStr) : 40.0;
+      var laborPrice = (laborPriceStr && !isNaN(parseFloat(laborPriceStr))) ? parseFloat(laborPriceStr) : 60.0;
       
       // Inject the widget HTML.
       calculators[i].innerHTML = `
@@ -29,13 +29,17 @@
             <input type="number" id="smc-depth-${i}" placeholder="Enter mulch depth" value="3">
           </div>
           <button id="smc-calc-${i}">Calculate</button>
-          <p id="smc-result-${i}"></p>
-          <p id="smc-cost-${i}"></p>
-          <p class="smc-disclaimer">*Note: This estimate includes only labor costs. Mulch material price is not included.</p>
-          <p class="smc-credit">Tool by <a href="https://supersoniclandscaping.com" target="_blank">Supersonic Landscaping</a></p>
+          <div id="smc-results-${i}" class="smc-results">
+            <p><strong>Mulch volume required:</strong> <span id="smc-result-${i}">—</span></p>
+            <p><strong>Estimated labor cost:</strong> <span id="smc-cost-${i}">—</span></p>
+          </div>
+          <p class="smc-disclaimer" style="font-size:12px;">*Note: This estimate includes only labor costs. Mulch material price is not included.</p>
+          <p class="smc-credit">
+            Tool by <a href="https://supersoniclandscaping.com" target="_blank">Supersonic Landscaping</a>
+          </p>
         </div>
       `;
-      
+
       // Attach an event listener to the calculate button.
       (function(index) {
         var calcButton = document.getElementById("smc-calc-" + index);
@@ -45,30 +49,35 @@
           var depth = parseFloat(document.getElementById("smc-depth-" + index).value);
           var resultEl = document.getElementById("smc-result-" + index);
           var costEl = document.getElementById("smc-cost-" + index);
-          
+
           // Validate the inputs.
           if (isNaN(width) || isNaN(length) || isNaN(depth) || width <= 0 || length <= 0 || depth <= 0) {
-            resultEl.innerText = "Please enter valid numbers for width, length, and depth.";
+            resultEl.innerText = "Please enter valid numbers.";
             costEl.innerText = "";
             return;
           }
-          
+
           // Calculate area in square feet.
           var area = width * length;
-          
-          // Calculate volume:
-          // - Convert depth from inches to feet.
-          // - Compute volume in cubic feet: area * (depth in feet).
-          // - Convert cubic feet to cubic yards (1 cubic yard = 27 cubic feet).
+          // Calculate volume in cubic feet: area * (depth in feet).
           var volumeCubicFeet = area * (depth / 12);
+          // Convert volume to cubic yards (1 cubic yard = 27 cubic feet).
           var volumeCubicYards = volumeCubicFeet / 27;
-          
-          // Calculate labor cost using the custom labor price.
+          // Calculate labor cost.
           var laborCost = volumeCubicYards * laborPrice;
-          
-          // Display the results.
-          resultEl.innerText = "Mulch volume required: " + volumeCubicYards.toFixed(2) + " cubic yards.";
-          costEl.innerText = "Estimated labor cost: $" + laborCost.toFixed(2);
+
+          // Update the result placeholders.
+          resultEl.innerText = volumeCubicYards.toFixed(2) + " cubic yards";
+          costEl.innerText = "$" + laborCost.toFixed(2);
+
+          // Trigger confetti if the confetti library is loaded.
+          if (typeof confetti === 'function') {
+            confetti({ 
+              particleCount: 100, 
+              spread: 70, 
+              origin: { y: 0.6 }
+            });
+          }
         });
       })(i);
     }
