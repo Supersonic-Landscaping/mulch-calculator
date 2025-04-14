@@ -48,7 +48,7 @@
 
 /* Button styling */
 .smc-widget button {
-  width: 100%;
+  width: 225px;
   background-color: #27ae60;
   border: none;
   color: #fff;
@@ -84,14 +84,13 @@
 /* Credit styling */
 .smc-credit {
   font-size: 0.8em;
-  text-align: center;
-  margin-top: 16px;
+  text-align: left;
+  margin-top: 13px;
   color: #888;
 }
 
 .smc-credit a {
   color: #888;
-  text-decoration: none;
 }
 
 .smc-credit a:hover {
