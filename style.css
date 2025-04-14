@@ -2,14 +2,16 @@
 
 /* Container styling */
 .smc-widget {
+  width: 100%; /* Full width by default */
   font-family: Arial, sans-serif;
-  max-width: 320px;
+  max-width: 100%;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 6px;
   padding: 16px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* Title styling */
@@ -63,14 +65,23 @@
 }
 
 /* Result message styling */
-.smc-widget p#smc-result {
+.smc-widget p#smc-result,
+.smc-widget p#smc-cost {
   font-size: 1em;
   text-align: center;
   margin-top: 12px;
   color: #333;
 }
 
-/* Credit styling - makes sure the backlink is subtle yet visible */
+/* Disclaimer styling - small print (12px) */
+.smc-disclaimer {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 16px;
+  color: #888;
+}
+
+/* Credit styling */
 .smc-credit {
   font-size: 0.8em;
   text-align: center;
