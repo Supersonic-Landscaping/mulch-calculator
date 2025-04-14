@@ -3,7 +3,7 @@
 /* Container styling */
 .smc-widget {
   width: 100%; /* Full width by default */
-  font-family: Arial, sans-serif;
+  font-family: inherit;
   max-width: 100%;
   background-color: #fff;
   border: 1px solid #ddd;
