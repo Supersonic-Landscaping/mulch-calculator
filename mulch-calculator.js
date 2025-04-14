@@ -32,7 +32,7 @@
           <!-- Visible HTML for the calculator widget -->
           <h3>${titleText}</h3>
           <p class="smc-estimate-note" style="font-style: italic; font-size: 0.9em; color: #555; text-align: left; margin-bottom: 18px;">
-            This is an estimated quote; final pricing may vary based on project specifics. <strong>Contact Us for a final quote</strong>
+            This is an estimated quote; final pricing may vary based on project specifics.<br><strong>Contact Us for a final quote.</strong>
           </p>
           <div class="smc-field">
             <label>Width (ft):</label>
