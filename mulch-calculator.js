@@ -1,20 +1,4 @@
 (function() {
-  // Function to inject the stylesheet dynamically if not already present.
-  function injectStylesheet() {
-    if (!document.getElementById("smc-stylesheet")) {
-      var link = document.createElement("link");
-      link.id = "smc-stylesheet";
-      link.rel = "stylesheet";
-      link.type = "text/css"; // Explicitly set MIME type
-      // Use raw.githack.com so that the CSS is served with proper headers
-      link.href = "https://raw.githack.com/Supersonic-Landscaping/mulch-calculator/main/style.css";
-      document.head.appendChild(link);
-    }
-  }
-  
-  // Immediately inject the stylesheet.
-  injectStylesheet();
-
   // Wait for the DOM to be fully loaded.
   document.addEventListener("DOMContentLoaded", function() {
     // Get all elements designated to host the mulch calculator widget.
