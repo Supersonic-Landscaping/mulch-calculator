@@ -58,7 +58,7 @@
   cursor: pointer;
   margin-top: 8px;
   transition: background-color 0.3s ease;
-  margin-bottom: 32px;
+  margin-bottom: 12px;
 }
 
 .smc-widget button:hover {
@@ -68,7 +68,7 @@
 /* Result message styling */
 .smc-widget p#smc-result,
 .smc-widget p#smc-cost {
-  font-size: 1em;
+  font-size: 16px;
   text-align: left;
   margin-top: 32px;
   color: #333;
@@ -84,7 +84,7 @@
 
 /* Credit styling */
 .smc-credit {
-  font-size: 0.8em;
+  font-size: 12px;
   text-align: left;
   margin-top: 13px;
   color: #888;
