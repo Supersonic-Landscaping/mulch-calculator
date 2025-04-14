@@ -16,7 +16,7 @@
       calculators[i].innerHTML = `
         <div class="smc-widget">
           <h3>${titleText}</h3>
-          <p class="smc-estimate-note" style="font-style: italic; font-size: 0.9em; color: #555; text-align: center;">
+          <p class="smc-estimate-note" style="font-style: italic; font-size: 0.9em; color: #555; text-align: left;">
             This is an estimated quote; final pricing may vary based on project specifics.
           </p>
           <div class="smc-field">
