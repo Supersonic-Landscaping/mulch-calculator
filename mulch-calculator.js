@@ -4,10 +4,10 @@
     // Get all elements designated to host the mulch calculator widget.
     var calculators = document.getElementsByClassName("supersonic-mulch-calculator");
 
-    // Loop through each instance of the calculator.
+    // Loop through each calculator instance.
     for (var i = 0; i < calculators.length; i++) {
-      // Get a custom title; default to "Mulch Installation Calculator" if not provided.
-      var titleText = calculators[i].getAttribute("data-title") || "Mulch Installation Calculator";
+      // Get custom title; default to "Mulch Installation Estimate" if not provided.
+      var titleText = calculators[i].getAttribute("data-title") || "Mulch Installation Estimate";
       // Get the custom labor price attribute; default to $60 per cubic yard if not provided.
       var laborPriceStr = calculators[i].getAttribute("data-labor-price");
       var laborPrice = (laborPriceStr && !isNaN(parseFloat(laborPriceStr))) ? parseFloat(laborPriceStr) : 60.0;
@@ -16,6 +16,9 @@
       calculators[i].innerHTML = `
         <div class="smc-widget">
           <h3>${titleText}</h3>
+          <p class="smc-estimate-note" style="font-style: italic; font-size: 0.9em; color: #555; text-align: center;">
+            This is an estimated quote; final pricing may vary based on project specifics.
+          </p>
           <div class="smc-field">
             <label>Width (ft):</label>
             <input type="number" id="smc-width-${i}" placeholder="Enter width">
@@ -27,7 +30,7 @@
           <div class="smc-field">
             <label>
               Mulch Depth (in):
-              <span class="tooltip" title="Recommended: For flower beds, 2-3 inches; for tree rings or larger plantings, up to 4 inches.">?</span>
+              <span class="tooltip" title="Recommended: For flower beds, 2-3 inches; for tree rings or larger plantings, 3-4 inches. Avoid piling mulch directly against tree trunks.">?</span>
             </label>
             <input type="number" id="smc-depth-${i}" placeholder="Enter mulch depth" value="3">
           </div>
@@ -37,7 +40,7 @@
             <p><strong>Estimated labor cost:</strong> <span id="smc-cost-${i}">—</span></p>
           </div>
           <p class="smc-disclaimer" style="font-size:12px;">*Note: This estimate includes only labor costs. Mulch material price is not included.</p>
-          <p class="smc-credit">Tool by <a href="https://www.supersoniclandscaping.com" target="_blank">Supersonic Landscaping</a></p>
+          <p class="smc-credit">Tool by <a href="https://supersoniclandscaping.com" target="_blank">Supersonic Landscaping</a></p>
         </div>
       `;
       
@@ -88,7 +91,6 @@
     }
   });
 })();
-
 
 
 
