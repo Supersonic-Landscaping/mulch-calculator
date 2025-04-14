@@ -5,7 +5,7 @@
       var link = document.createElement("link");
       link.id = "smc-stylesheet";
       link.rel = "stylesheet";
-      link.href = "https://cdn.jsdelivr.net/gh/Supersonic-Landscaping/mulch-calculator/mulch-calculator.css";
+      link.href = "https://cdn.jsdelivr.net/gh/Supersonic-Landscaping/mulch-calculator/style.css";
       document.head.appendChild(link);
     }
   }
