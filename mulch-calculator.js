@@ -12,10 +12,10 @@
       var laborPriceStr = calculators[i].getAttribute("data-labor-price");
       var laborPrice = (laborPriceStr && !isNaN(parseFloat(laborPriceStr))) ? parseFloat(laborPriceStr) : 60.0;
       
-      // Inject the widget HTML with microdata markup.
+      // Inject the widget HTML with embedded microdata.
       calculators[i].innerHTML = `
         <div class="smc-widget" itemscope itemtype="https://schema.org/WebApplication">
-          <!-- Basic Microdata Attributes -->
+          <!-- Microdata for the WebApplication -->
           <meta itemprop="name" content="${titleText}">
           <meta itemprop="description" content="This tool provides an estimated mulch installation price based on user-supplied dimensions and labor cost inputs.">
           <meta itemprop="applicationCategory" content="UtilitiesApplication">
@@ -24,7 +24,12 @@
             <meta itemprop="price" content="0">
             <meta itemprop="priceCurrency" content="USD">
           </div>
+          <div itemprop="creator" itemscope itemtype="https://schema.org/Organization">
+            <meta itemprop="name" content="Supersonic Landscaping">
+            <meta itemprop="url" content="https://www.supersoniclandscaping.com/">
+          </div>
 
+          <!-- Visible HTML for the calculator widget -->
           <h3>${titleText}</h3>
           <p class="smc-estimate-note" style="font-style: italic; font-size: 0.9em; color: #555; text-align: left; margin-bottom: 18px;">
             This is an estimated quote; final pricing may vary based on project specifics.
@@ -50,6 +55,7 @@
             <p><strong>Estimated labor cost:</strong> <span id="smc-cost-${i}">—</span></p>
           </div>
           <p class="smc-disclaimer" style="font-size:12px;">*Note: This estimate includes only labor costs. Mulch material price is not included.</p>
+          <p class="smc-contact" style="font-size:14px; font-weight:bold;">Contact Us for a final quote</p>
           <p class="smc-credit">Tool by <a href="https://www.supersoniclandscaping.com" target="_blank">Supersonic Landscaping</a></p>
         </div>
       `;
@@ -101,6 +107,7 @@
     }
   });
 })();
+
 
 
 
