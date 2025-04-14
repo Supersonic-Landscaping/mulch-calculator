@@ -5,12 +5,12 @@
       var link = document.createElement("link");
       link.id = "smc-stylesheet";
       link.rel = "stylesheet";
-      link.href = "https://cdn.jsdelivr.net/gh/Supersonic-Landscaping/mulch-calculator/style.css";
+      link.href = "https://cdn.jsdelivr.net/gh/Supersonic-Landscaping/mulch-calculator/mulch-calculator.css";
       document.head.appendChild(link);
     }
   }
   
-  // Immediately inject the CSS.
+  // Immediately inject the stylesheet.
   injectStylesheet();
 
   // Wait for the DOM to be fully loaded.
@@ -31,12 +31,16 @@
         <div class="smc-widget">
           <h3>${titleText}</h3>
           <div class="smc-field">
-            <label>Area (sq ft):</label>
-            <input type="number" id="smc-area-${i}" placeholder="Enter area">
+            <label>Width (ft):</label>
+            <input type="number" id="smc-width-${i}" placeholder="Enter width">
+          </div>
+          <div class="smc-field">
+            <label>Length (ft):</label>
+            <input type="number" id="smc-length-${i}" placeholder="Enter length">
           </div>
           <div class="smc-field">
             <label>Mulch Depth (in):</label>
-            <input type="number" id="smc-depth-${i}" placeholder="Enter mulch depth">
+            <input type="number" id="smc-depth-${i}" placeholder="Enter mulch depth" value="3">
           </div>
           <button id="smc-calc-${i}">Calculate</button>
           <p id="smc-result-${i}"></p>
@@ -52,22 +56,26 @@
       (function(index) {
         var calcButton = document.getElementById("smc-calc-" + index);
         calcButton.addEventListener("click", function() {
-          var area = parseFloat(document.getElementById("smc-area-" + index).value);
+          var width = parseFloat(document.getElementById("smc-width-" + index).value);
+          var length = parseFloat(document.getElementById("smc-length-" + index).value);
           var depth = parseFloat(document.getElementById("smc-depth-" + index).value);
           var resultEl = document.getElementById("smc-result-" + index);
           var costEl = document.getElementById("smc-cost-" + index);
           
           // Validate the inputs.
-          if (isNaN(area) || isNaN(depth) || area <= 0 || depth <= 0) {
-            resultEl.innerText = "Please enter valid numbers for both area and depth.";
+          if (isNaN(width) || isNaN(length) || isNaN(depth) || width <= 0 || length <= 0 || depth <= 0) {
+            resultEl.innerText = "Please enter valid numbers for width, length, and depth.";
             costEl.innerText = "";
             return;
           }
           
+          // Calculate area in square feet.
+          var area = width * length;
+          
           // Calculate volume:
-          // 1. Convert depth from inches to feet.
-          // 2. Compute volume in cubic feet.
-          // 3. Convert to cubic yards (1 cubic yard = 27 cubic feet).
+          // - Convert depth from inches to feet.
+          // - Compute volume in cubic feet: area * (depth in feet).
+          // - Convert to cubic yards (1 cubic yard = 27 cubic feet).
           var volumeCubicFeet = area * (depth / 12);
           var volumeCubicYards = volumeCubicFeet / 27;
           
@@ -82,4 +90,5 @@
     }
   });
 })();
+
 
